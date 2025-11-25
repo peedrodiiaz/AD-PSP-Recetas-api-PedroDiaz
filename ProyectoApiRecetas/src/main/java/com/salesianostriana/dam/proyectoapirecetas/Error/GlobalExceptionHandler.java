@@ -8,17 +8,17 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(EntidadNoEncontradaException.class)
+    @ExceptionHandler(NombreDuplicadoException.class)
     public ProblemDetail handleNombreDuplicado(EntidadNoEncontradaException ex) {
         ProblemDetail pd= ProblemDetail.forStatusAndDetail(HttpStatus.CONFLICT, ex.getMessage());
-        pd.setTitle("Ya existe una categoría con ese nombre");
+        pd.setTitle(ex.getMessage());
         return  pd;
 
     }
     @ExceptionHandler(EntidadNoEncontradaException.class)
     public ProblemDetail handleNoEncontrada(EntidadNoEncontradaException ex) {
         ProblemDetail problem = ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, ex.getMessage());
-        problem.setTitle("Categoría no encontrada");
+        problem.setTitle(ex.getMessage());
         return problem;
     }
 }
