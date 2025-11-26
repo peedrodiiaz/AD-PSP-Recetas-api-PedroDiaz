@@ -34,5 +34,12 @@ public class GlobalExceptionHandler {
         pd.setTitle("Categoría inválida");
         return pd;
     }
+    @ExceptionHandler(IngredienteYaAnadidoException.class)
+    public ProblemDetail handleIngredienteYaAnadido(IngredienteYaAnadidoException ex) {
+        ProblemDetail pd = ProblemDetail.forStatusAndDetail(HttpStatus.CONFLICT, ex.getMessage());
+        pd.setTitle("Ingrediente ya añadido a la receta");
+        return pd;
+    }
+
 
 }

@@ -1,7 +1,10 @@
 package com.salesianostriana.dam.proyectoapirecetas.Controller;
 
+import com.salesianostriana.dam.proyectoapirecetas.Dto.AniadirIngredienteDto;
 import com.salesianostriana.dam.proyectoapirecetas.Dto.EditRecetaDto;
+import com.salesianostriana.dam.proyectoapirecetas.Dto.IngredienteEnRecetaDto;
 import com.salesianostriana.dam.proyectoapirecetas.Dto.ResponseRecetaDto;
+import com.salesianostriana.dam.proyectoapirecetas.Model.RecetaIngrediente;
 import com.salesianostriana.dam.proyectoapirecetas.Service.RecetaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -47,6 +50,13 @@ public class RecetaController {
         recetaService.delete(id);
         return ResponseEntity.noContent().build();
     }
+    @PostMapping("/{recetaId}/ingredientes")
+    public ResponseEntity<IngredienteEnRecetaDto> anadirIngrediente(@PathVariable Long recetaId,
+                    @RequestBody AniadirIngredienteDto cmd) {
+                        RecetaIngrediente ri = recetaService.anadirIngrediente(recetaId, cmd);
+                        return ResponseEntity.status(HttpStatus.CREATED).body(IngredienteEnRecetaDto.of(ri));
+    }
+
 
 
 

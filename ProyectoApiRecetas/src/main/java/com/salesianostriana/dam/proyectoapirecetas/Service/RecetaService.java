@@ -1,10 +1,15 @@
 package com.salesianostriana.dam.proyectoapirecetas.Service;
 
+import com.salesianostriana.dam.proyectoapirecetas.Dto.AniadirIngredienteDto;
 import com.salesianostriana.dam.proyectoapirecetas.Dto.EditRecetaDto;
 import com.salesianostriana.dam.proyectoapirecetas.Error.*;
 import com.salesianostriana.dam.proyectoapirecetas.Model.Categoria;
+import com.salesianostriana.dam.proyectoapirecetas.Model.Ingrediente;
 import com.salesianostriana.dam.proyectoapirecetas.Model.Receta;
+import com.salesianostriana.dam.proyectoapirecetas.Model.RecetaIngrediente;
 import com.salesianostriana.dam.proyectoapirecetas.Repository.CategoriaRepository;
+import com.salesianostriana.dam.proyectoapirecetas.Repository.IngredienteRepository;
+import com.salesianostriana.dam.proyectoapirecetas.Repository.RecetaIngredienteRepository;
 import com.salesianostriana.dam.proyectoapirecetas.Repository.RecetaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,7 +22,8 @@ public class RecetaService {
 
     private final RecetaRepository recetaRepository;
     private final CategoriaRepository categoriaRepository;
-
+    private final IngredienteRepository ingredienteRepository;
+    private final RecetaIngredienteRepository recetaIngredienteRepository;
 
     public List<Receta> getAll(){
 
@@ -99,7 +105,26 @@ public class RecetaService {
         recetaRepository.deleteById(id);
     }
 
+    public RecetaIngrediente anadirIngrediente(Long recetaId, AniadirIngredienteDto cmd) {
+        Receta receta = recetaRepository.findById(recetaId)
+                .orElseThrow(() -> new EntidadNoEncontradaException("Receta no encontrada con id: " + recetaId));
 
+        Ingrediente ingrediente = ingredienteRepository.findById(cmd.ingredienteId())
+                .orElseThrow(() -> new EntidadNoEncontradaException(cmd.ingredienteId()));
+
+        if (recetaIngredienteRepository.existsByRecetaIdAndIngredienteId(recetaId, cmd.ingredienteId())) {
+            throw new IngredienteYaAnadidoException();
+        }
+
+        RecetaIngrediente ri = RecetaIngrediente.builder()
+                .receta(receta)
+                .ingrediente(ingrediente)
+                .cantidad(cmd.cantidad())
+                .unidad(cmd.unidad())
+                .build();
+
+        return recetaIngredienteRepository.save(ri);
+    }
 
 
 

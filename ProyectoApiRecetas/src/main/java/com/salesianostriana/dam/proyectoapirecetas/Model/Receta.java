@@ -3,6 +3,8 @@ package com.salesianostriana.dam.proyectoapirecetas.Model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -19,6 +21,8 @@ public class Receta {
     @ManyToOne
     @JoinColumn(name = "categoria_id")
     private Categoria categoria;
+    @OneToMany(mappedBy = "receta", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<RecetaIngrediente> recetaIngredientes;
 
 
 }
