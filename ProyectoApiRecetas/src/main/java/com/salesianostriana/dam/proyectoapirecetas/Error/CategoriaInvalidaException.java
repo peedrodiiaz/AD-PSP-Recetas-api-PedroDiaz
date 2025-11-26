@@ -2,7 +2,7 @@ package com.salesianostriana.dam.proyectoapirecetas.Error;
 
 import java.util.function.Supplier;
 
-public class CategoriaInvalidaException extends RuntimeException implements Supplier<@org.jetbrains.annotations.NotNull X> {
+public class CategoriaInvalidaException extends RuntimeException {
     public CategoriaInvalidaException(String message) {
         super(message);
     }
