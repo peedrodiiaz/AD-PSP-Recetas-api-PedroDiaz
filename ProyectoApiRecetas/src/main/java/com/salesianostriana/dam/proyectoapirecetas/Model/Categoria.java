@@ -13,7 +13,7 @@ import java.util.Set;
 public class Categoria {
     @Id @GeneratedValue
     private Long id;
-    private String name;
+    private String nombre;
     private String descripcion;
     @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
     private Set<Receta>recetas;

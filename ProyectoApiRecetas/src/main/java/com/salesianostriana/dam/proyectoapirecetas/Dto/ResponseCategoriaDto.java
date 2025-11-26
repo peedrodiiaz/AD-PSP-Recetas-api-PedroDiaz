@@ -16,7 +16,7 @@ public record ResponseCategoriaDto(
         return  new ResponseCategoriaDto(
                 c.getId(),
                 c.getDescripcion(),
-                c.getName()
+                c.getNombre()
 
         );
     }

@@ -20,7 +20,7 @@ public record ResponseRecetaDto(
                 r.getName(),
                 r.getTiempoPreparacion(),
                 r.getDificultad(),
-                r.getCategoria().getName(),
+                r.getCategoria().getNombre(),
                 r.getRecetaIngredientes().stream()
                         .map(IngredienteEnRecetaDto::of)
                         .toList()

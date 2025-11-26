@@ -15,7 +15,6 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class CategoriaService {
-    //GET ALL, GET ID, PUT, POST, DELETE
 
     private final CategoriaRepository categoriaRepository;
 
@@ -39,7 +38,7 @@ public class CategoriaService {
     public Categoria save (EditCategoriaDto cmd){
         List<Categoria>lista= categoriaRepository.findAll();
         boolean noHacer= lista.stream().anyMatch(c->
-            c.getName().equalsIgnoreCase(cmd.nombre())
+            c.getNombre().equalsIgnoreCase(cmd.nombre())
         );
         if (noHacer)
             throw  new NombreDuplicadoException();
@@ -47,7 +46,7 @@ public class CategoriaService {
 
         return categoriaRepository.save(
                 Categoria.builder()
-                        .name(cmd.nombre())
+                        .nombre(cmd.nombre())
                         .descripcion(cmd.descripcion())
                         .build()
         );
@@ -57,16 +56,16 @@ public class CategoriaService {
     public Categoria edit(EditCategoriaDto cmd, Long id) {
         return categoriaRepository.findById(id)
                 .map(c -> {
-                    if (!c.getName().equalsIgnoreCase(cmd.nombre())) {
+                    if (!c.getNombre().equalsIgnoreCase(cmd.nombre())) {
                         List<Categoria> lista = categoriaRepository.findAll();
                         boolean existe = lista.stream().anyMatch(cat ->
-                                cat.getName().equalsIgnoreCase(cmd.nombre())
+                                cat.getNombre().equalsIgnoreCase(cmd.nombre())
                         );
                         if (existe) {
                             throw new NombreDuplicadoException();
                         }
                     }
-                    c.setName(cmd.nombre());
+                    c.setNombre(cmd.nombre());
                     c.setDescripcion(cmd.descripcion());
                     return categoriaRepository.save(c);
                 })
