@@ -1,10 +1,7 @@
 package com.salesianostriana.dam.proyectoapirecetas.Service;
 
 import com.salesianostriana.dam.proyectoapirecetas.Dto.EditRecetaDto;
-import com.salesianostriana.dam.proyectoapirecetas.Error.CategoriaNotFoundException;
-import com.salesianostriana.dam.proyectoapirecetas.Error.NombreDuplicadoException;
-import com.salesianostriana.dam.proyectoapirecetas.Error.RecetaNoEncontradaException;
-import com.salesianostriana.dam.proyectoapirecetas.Error.TiempoInvalidoException;
+import com.salesianostriana.dam.proyectoapirecetas.Error.*;
 import com.salesianostriana.dam.proyectoapirecetas.Model.Categoria;
 import com.salesianostriana.dam.proyectoapirecetas.Model.Receta;
 import com.salesianostriana.dam.proyectoapirecetas.Repository.CategoriaRepository;
@@ -49,9 +46,8 @@ public class RecetaService {
             throw new TiempoInvalidoException();
         if (noHacer)
             throw new NombreDuplicadoException();
-        Categoria categoria = categoriaRepository.findById(cmd.categoriaId()).orElseThrow(
-                CategoriaNotFoundException::new
-        );
+        Categoria categoria = categoriaRepository.findById(cmd.categoriaId())
+                .orElseThrow(() -> new CategoriaInvalidaException(cmd.categoriaId()));
 
         return Receta.builder()
                 .name(cmd.name())
@@ -62,6 +58,7 @@ public class RecetaService {
 
     }
     // Al crear o editar si se manda una categoría que no existe se manda un error 400
+    // Preguntar por el crear
 
     public Receta edit (EditRecetaDto cmd,Long id){
         List<Receta>lista = recetaRepository.findAll();

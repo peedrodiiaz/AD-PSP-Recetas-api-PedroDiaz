@@ -10,7 +10,7 @@ public record ResponseRecetaDto(
         Dificultad dificultad,
         String categoriaName
 ) {
-    public ResponseRecetaDto of (Receta r){
+    public static ResponseRecetaDto of (Receta r){
         return  new ResponseRecetaDto(
                 r.getId(),
                 r.getName(),

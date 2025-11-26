@@ -9,6 +9,6 @@ public class RecetaNoEncontradaException extends EntidadNoEncontradaException {
     }
 
     public RecetaNoEncontradaException(Long id){
-        super("No se han encontrado la receta con ID ".formatted(id));
+        super("No se han encontrado la receta con ID %d ".formatted(id));
     }
 }

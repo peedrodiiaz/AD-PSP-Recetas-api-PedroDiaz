@@ -11,21 +11,28 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(NombreDuplicadoException.class)
     public ProblemDetail handleNombreDuplicado(NombreDuplicadoException ex) {
         ProblemDetail pd= ProblemDetail.forStatusAndDetail(HttpStatus.CONFLICT, ex.getMessage());
-        pd.setTitle(ex.getMessage());
+        pd.setTitle("Error de Nombre");
         return  pd;
 
     }
     @ExceptionHandler(EntidadNoEncontradaException.class)
     public ProblemDetail handleNoEncontrada(EntidadNoEncontradaException ex) {
         ProblemDetail problem = ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, ex.getMessage());
-        problem.setTitle(ex.getMessage());
+        problem.setTitle("Entidad no encontrada");
         return problem;
     }
 
     @ExceptionHandler(TiempoInvalidoException.class)
     public ProblemDetail handleTiempoInvalido(TiempoInvalidoException ex){
         ProblemDetail pd= ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST,ex.getMessage());
-        pd.setTitle(ex.getMessage());
+        pd.setTitle("El tiempo de la receta no puede ser 0 o menos");
         return  pd;
     }
+    @ExceptionHandler(CategoriaInvalidaException.class)
+    public ProblemDetail handleCategoriaInvalida(CategoriaInvalidaException ex) {
+        ProblemDetail pd = ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, ex.getMessage());
+        pd.setTitle("Categoría inválida");
+        return pd;
+    }
+
 }
