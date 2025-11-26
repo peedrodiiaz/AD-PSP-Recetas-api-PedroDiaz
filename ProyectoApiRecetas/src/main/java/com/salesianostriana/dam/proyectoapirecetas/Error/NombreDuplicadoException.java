@@ -5,6 +5,6 @@ public class NombreDuplicadoException extends RuntimeException {
         super(message);
     }
     public NombreDuplicadoException(){
-        super("Ya existe una categoria con ese nombre");
+        super("Ya existe una entidad con ese nombre");
     }
 }
