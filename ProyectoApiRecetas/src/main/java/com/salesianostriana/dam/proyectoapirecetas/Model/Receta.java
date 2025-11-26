@@ -1,8 +1,7 @@
 package com.salesianostriana.dam.proyectoapirecetas.Model;
+
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.util.Set;
 
 @Getter
 @Setter
@@ -10,11 +9,16 @@ import java.util.Set;
 @NoArgsConstructor
 @Builder
 @Entity
-public class Categoria {
-    @Id @GeneratedValue
+public class Receta {
+
+    @Id@GeneratedValue
     private Long id;
     private String name;
-    private String descripcion;
-    @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
-    private Set<Receta>recetas;
+    private int tiempoPreparacion;
+    private Dificultad dificultad;
+    @ManyToOne
+    @JoinColumn(name = "categoria_id")
+    private Categoria categoria;
+
+
 }

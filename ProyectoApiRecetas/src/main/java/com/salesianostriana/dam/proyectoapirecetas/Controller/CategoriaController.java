@@ -1,14 +1,13 @@
 package com.salesianostriana.dam.proyectoapirecetas.Controller;
 
 import com.salesianostriana.dam.proyectoapirecetas.Dto.EditCategoriaDto;
-import com.salesianostriana.dam.proyectoapirecetas.Dto.GetCategoriaDto;
+import com.salesianostriana.dam.proyectoapirecetas.Dto.ResponseCategoriaDto;
 import com.salesianostriana.dam.proyectoapirecetas.Service.CategoriaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collection;
 import java.util.List;
 
 @RestController
@@ -20,28 +19,28 @@ public class CategoriaController {
 
 
     @GetMapping
-    public List<GetCategoriaDto> getAll (){
+    public List<ResponseCategoriaDto> getAll (){
         return categoriaService.getAll().stream()
-                .map(GetCategoriaDto::of).toList();
+                .map(ResponseCategoriaDto::of).toList();
     }
     @GetMapping("/{id}")
-    public GetCategoriaDto getById (@PathVariable Long id){
-        return GetCategoriaDto.of(categoriaService.findById(id));
+    public ResponseCategoriaDto getById (@PathVariable Long id){
+        return ResponseCategoriaDto.of(categoriaService.findById(id));
     }
 
     @PostMapping
-    public ResponseEntity<GetCategoriaDto> create(
+    public ResponseEntity<ResponseCategoriaDto> create(
             @RequestBody EditCategoriaDto cmd
             ){
         return ResponseEntity.status(HttpStatus.CREATED).body(
-                GetCategoriaDto.of(categoriaService.save(cmd))
+                ResponseCategoriaDto.of(categoriaService.save(cmd))
         );
     }
 
 
     @PutMapping("/{id}")
-    public GetCategoriaDto edit(@PathVariable Long id, EditCategoriaDto cmd){
-        return GetCategoriaDto.of(categoriaService.edit(cmd,id));
+    public ResponseCategoriaDto edit(@PathVariable Long id, EditCategoriaDto cmd){
+        return ResponseCategoriaDto.of(categoriaService.edit(cmd,id));
     }
 
     @DeleteMapping("/{id}")

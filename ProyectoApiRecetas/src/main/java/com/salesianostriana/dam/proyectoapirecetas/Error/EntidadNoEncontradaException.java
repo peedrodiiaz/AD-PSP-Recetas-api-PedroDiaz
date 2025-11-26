@@ -5,4 +5,6 @@ public class EntidadNoEncontradaException extends RuntimeException {
         super(message);
     }
 
+
+
 }

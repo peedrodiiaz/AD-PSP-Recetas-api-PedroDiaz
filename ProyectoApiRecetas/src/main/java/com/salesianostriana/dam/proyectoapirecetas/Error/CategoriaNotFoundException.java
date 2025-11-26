@@ -9,6 +9,6 @@ public class CategoriaNotFoundException extends EntidadNoEncontradaException {
         super("No se han encontrado categorias");
     }
     public CategoriaNotFoundException(Long id){
-        super("No se han encontrado la categoría con ".formatted(id));
+        super("No se han encontrado la categoría con Id".formatted(id));
     }
 }
