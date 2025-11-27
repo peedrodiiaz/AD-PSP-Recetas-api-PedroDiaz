@@ -7,7 +7,7 @@ import java.util.Set;
 
 public record ResponseCategoriaDto(
         Long id,
-        String name,
+        String nombre,
         String descripcion
 
 
@@ -15,8 +15,9 @@ public record ResponseCategoriaDto(
     public static ResponseCategoriaDto of(Categoria c){
         return  new ResponseCategoriaDto(
                 c.getId(),
-                c.getDescripcion(),
-                c.getNombre()
+                c.getNombre(),
+                c.getDescripcion()
+
 
         );
     }

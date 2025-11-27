@@ -39,8 +39,9 @@ public class CategoriaController {
 
 
     @PutMapping("/{id}")
-    public ResponseCategoriaDto edit(@PathVariable Long id, EditCategoriaDto cmd){
+    public ResponseCategoriaDto edit(@PathVariable Long id, @RequestBody EditCategoriaDto cmd){
         return ResponseCategoriaDto.of(categoriaService.edit(cmd,id));
+
     }
 
     @DeleteMapping("/{id}")

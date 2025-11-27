@@ -56,7 +56,7 @@ public class CategoriaService {
     public Categoria edit(EditCategoriaDto cmd, Long id) {
         return categoriaRepository.findById(id)
                 .map(c -> {
-                    if (!c.getNombre().equalsIgnoreCase(cmd.nombre())) {
+                    if (c.getNombre().equalsIgnoreCase(cmd.nombre())) {
                         List<Categoria> lista = categoriaRepository.findAll();
                         boolean existe = lista.stream().anyMatch(cat ->
                                 cat.getNombre().equalsIgnoreCase(cmd.nombre())
