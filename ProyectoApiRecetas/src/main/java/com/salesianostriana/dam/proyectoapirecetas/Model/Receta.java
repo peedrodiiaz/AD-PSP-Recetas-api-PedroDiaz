@@ -24,7 +24,7 @@ public class Receta {
     @JoinColumn(name = "categoria_id")
     private Categoria categoria;
 
-    @OneToMany(mappedBy = "receta", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "receta", fetch = FetchType.EAGER)
     @Builder.Default
     private List<RecetaIngrediente> recetaIngredientes=new ArrayList<>();
 
