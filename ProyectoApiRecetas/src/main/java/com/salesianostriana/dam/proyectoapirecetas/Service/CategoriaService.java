@@ -2,7 +2,6 @@ package com.salesianostriana.dam.proyectoapirecetas.Service;
 
 import com.salesianostriana.dam.proyectoapirecetas.Dto.EditCategoriaDto;
 import com.salesianostriana.dam.proyectoapirecetas.Error.CategoriaNotFoundException;
-import com.salesianostriana.dam.proyectoapirecetas.Error.EntidadNoEncontradaException;
 import com.salesianostriana.dam.proyectoapirecetas.Error.NombreDuplicadoException;
 import com.salesianostriana.dam.proyectoapirecetas.Model.Categoria;
 import com.salesianostriana.dam.proyectoapirecetas.Repository.CategoriaRepository;

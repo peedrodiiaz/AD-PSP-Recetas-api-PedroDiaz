@@ -3,6 +3,7 @@ package com.salesianostriana.dam.proyectoapirecetas.Model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -13,7 +14,8 @@ import java.util.List;
 @Entity
 public class Receta {
 
-    @Id@GeneratedValue
+        @Id
+    @GeneratedValue
     private Long id;
     private String name;
     private int tiempoPreparacion;
@@ -21,8 +23,10 @@ public class Receta {
     @ManyToOne
     @JoinColumn(name = "categoria_id")
     private Categoria categoria;
+
     @OneToMany(mappedBy = "receta", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<RecetaIngrediente> recetaIngredientes;
+    @Builder.Default
+    private List<RecetaIngrediente> recetaIngredientes=new ArrayList<>();
 
 
 }

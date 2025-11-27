@@ -1,0 +1,799 @@
+{
+	"info": {
+		"_postman_id": "685c419f-d416-4848-8c82-7cc14aa53d0c",
+		"name": "API Gestión de Recetas",
+		"description": "Colección completa para probar la API de gestión de recetas, categorías e ingredientes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "49291162",
+		"_collection_link": "https://diaz-gaped24-3502358.postman.co/workspace/Pedro's-Workspace~b8a58479-f29e-4b5c-8b39-4c19dcfbef3a/collection/49291162-685c419f-d416-4848-8c82-7cc14aa53d0c?action=share&source=collection_link&creator=49291162"
+	},
+	"item": [
+		{
+			"name": "1. Categorías",
+			"item": [
+				{
+					"name": "GET - Listar todas las categorías",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/categorias/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categorias",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET - Buscar categoría por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/categorias/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categorias",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST - Crear categoría",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\n  {\n    \"nombre\": \"Postres\",\n    \"descripcion\": \"Dulces y postres para por la tarde\"\n  }\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/categorias/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categorias",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT - Editar categoría",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Postres caseros\",\n  \"descripcion\": \"Dulces y postres tradicionales y caseros\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/categorias/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categorias",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE - Eliminar categoría",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/categorias/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categorias",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST - Error Nombre duplicado",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Postres\",\n  \"descripcion\": \"Intento de duplicar\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/categorias",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categorias"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET - Error Categoría no encontrada",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/categorias/999",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categorias",
+								"999"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "2. Recetas",
+			"item": [
+				{
+					"name": "GET - Listar todas las recetas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/recetas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"recetas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET - Buscar receta por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/recetas/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"recetas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST - Crear receta",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Postre\",\n  \"tiempoPreparacion\": 50,\n  \"dificultad\": \"FACIL\",\n  \"categoriaId\": 1\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/recetas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"recetas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT - Editar receta",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Mantecao\",\n  \"tiempoPreparacion\": 35,\n  \"dificultad\": \"MEDIA\",\n  \"categoriaId\": 1\n\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/recetas/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"recetas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE - Eliminar receta",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/recetas/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"recetas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST - Error Tiempo inválido",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Receta inválida\",\n  \"tiempoPreparacionMin\": 0,\n  \"dificultad\": \"FACIL\",\n  \"categoriaId\": 1\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/recetas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"recetas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST - Error Categoría inexistente",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Receta sin categoría\",\n  \"tiempoPreparacionMin\": 30,\n  \"dificultad\": \"MEDIA\",\n  \"categoriaId\": 92\n\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/recetas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"recetas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST - Error Nombre duplicado",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Postre\",\n  \"tiempoPreparacion\": 50,\n  \"dificultad\": \"MEDIA\",\n  \"categoriaId\": 1\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/recetas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"recetas"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "3. Ingredientes",
+			"item": [
+				{
+					"name": "GET - Listar todos los ingredientes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/ingredientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ingredientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST - Crear ingrediente (Arroz)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Arroz\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/ingredientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ingredientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST - Crear ingrediente (Pollo)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Pollo\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/ingredientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ingredientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST - Crear ingrediente (Tomate)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Tomate\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/ingredientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ingredientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST - Crear ingrediente (Huevos)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Huevos\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/ingredientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ingredientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST - Error 409: Nombre duplicado",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Arroz\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/ingredientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ingredientes"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "4. Gestión Ingredientes en Recetas (M:M)",
+			"item": [
+				{
+					"name": "POST - Añadir ingrediente a receta",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ingredienteId\": 1,\n  \"cantidad\": \"200\",\n  \"unidad\": \"gramos\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/recetas/1/ingredientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"recetas",
+								"1",
+								"ingredientes"
+							]
+						},
+						"description": "Añade un ingrediente a una receta especificando cantidad y unidad"
+					},
+					"response": []
+				},
+				{
+					"name": "POST - Añadir otro ingrediente (Pollo)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ingredienteId\": 2,\n  \"cantidad\": \"500\",\n  \"unidad\": \"gramos\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/recetas/1/ingredientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"recetas",
+								"1",
+								"ingredientes"
+							]
+						},
+						"description": "Añade otro ingrediente (Pollo) a la misma receta"
+					},
+					"response": []
+				},
+				{
+					"name": "POST - Añadir ingrediente (Tomate)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ingredienteId\": 3,\n  \"cantidad\": \"3\",\n  \"unidad\": \"unidades\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/recetas/1/ingredientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"recetas",
+								"1",
+								"ingredientes"
+							]
+						},
+						"description": "Añade Tomate a la receta"
+					},
+					"response": []
+				},
+				{
+					"name": "GET - Ver receta con sus ingredientes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/recetas/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"recetas",
+								"1"
+							]
+						},
+						"description": "Obtiene una receta incluyendo todos sus ingredientes con cantidad y unidad"
+					},
+					"response": []
+				},
+				{
+					"name": "POST - Error: Ingrediente ya añadido",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ingredienteId\": 1,\n  \"cantidad\": \"300\",\n  \"unidad\": \"gramos\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/recetas/1/ingredientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"recetas",
+								"1",
+								"ingredientes"
+							]
+						},
+						"description": "Intenta añadir un ingrediente que ya está en la receta (debe dar error)"
+					},
+					"response": []
+				},
+				{
+					"name": "POST - Error: Ingrediente no existe",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ingredienteId\": 999,\n  \"cantidad\": \"100\",\n  \"unidad\": \"gramos\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/recetas/1/ingredientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"recetas",
+								"1",
+								"ingredientes"
+							]
+						},
+						"description": "Intenta añadir un ingrediente que no existe (debe dar error)"
+					},
+					"response": []
+				},
+				{
+					"name": "POST - Error: Receta no existe",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ingredienteId\": 1,\n  \"cantidad\": \"100\",\n  \"unidad\": \"gramos\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/recetas/999/ingredientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"recetas",
+								"999",
+								"ingredientes"
+							]
+						},
+						"description": "Intenta añadir ingrediente a una receta que no existe (debe dar error)"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

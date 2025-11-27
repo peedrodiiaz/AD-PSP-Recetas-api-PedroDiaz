@@ -18,6 +18,7 @@ public class IngredienteService {
 
 
     public List<Ingrediente> getAll(){
+
         return ingredienteRepository.findAll();
     }
     public Ingrediente save(EditIngredienteDto cmd) {

@@ -44,45 +44,48 @@ public class RecetaService {
     public Receta save (EditRecetaDto cmd){
         List<Receta>lista = recetaRepository.findAll();
 
-        boolean noHacer= lista.stream()
-                .anyMatch(receta ->
-                    receta.getName().equalsIgnoreCase(cmd.name())
-                );
-        if (cmd.tiempoPreparacion()<=0)
-            throw new TiempoInvalidoException();
-        if (noHacer)
-            throw new NombreDuplicadoException();
+
         Categoria categoria = categoriaRepository.findById(cmd.categoriaId())
                 .orElseThrow(() -> new CategoriaInvalidaException(cmd.categoriaId()));
 
-        return Receta.builder()
+        if (cmd.tiempoPreparacion()<=0)
+            throw new TiempoInvalidoException();
+        boolean noHacer= lista.stream()
+                .anyMatch(receta ->
+                        receta.getName().equalsIgnoreCase(cmd.name())
+                );
+        if (noHacer)
+            throw new NombreDuplicadoException();
+
+        Receta receta= Receta.builder()
                 .name(cmd.name())
                 .dificultad(cmd.dificultad())
                 .categoria(categoria)
                 .tiempoPreparacion(cmd.tiempoPreparacion())
                 .build();
 
+        return recetaRepository.save(receta);
     }
-    // Al crear o editar si se manda una categoría que no existe se manda un error 400
-    // Preguntar por el crear
+
 
     public Receta edit (EditRecetaDto cmd,Long id){
         List<Receta>lista = recetaRepository.findAll();
-
-        boolean noHacer= lista.stream()
-                .anyMatch(receta ->
-                        !receta.getId().equals(id)&&
-                        receta.getName().equalsIgnoreCase(cmd.name())
-                );
-        if (cmd.tiempoPreparacion()<=0)
-            throw new TiempoInvalidoException();
-        if (noHacer)
-            throw new NombreDuplicadoException();
-
         Categoria categoria = categoriaRepository.findById(cmd.categoriaId()).
                 orElseThrow(
                         CategoriaNotFoundException::new
                 );
+
+        if (cmd.tiempoPreparacion()<=0)
+            throw new TiempoInvalidoException();
+        boolean noHacer= lista.stream()
+                .anyMatch(receta ->
+                        !receta.getId().equals(id)&&
+                                receta.getName().equalsIgnoreCase(cmd.name())
+                );
+        if (noHacer)
+            throw new NombreDuplicadoException();
+
+
 
         return recetaRepository.findById(id)
                 .map(
