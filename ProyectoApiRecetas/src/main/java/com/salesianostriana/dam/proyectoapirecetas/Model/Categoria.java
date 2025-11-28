@@ -15,6 +15,6 @@ public class Categoria {
     private Long id;
     private String nombre;
     private String descripcion;
-    @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "categoria", fetch = FetchType.EAGER)
     private Set<Receta>recetas;
 }
