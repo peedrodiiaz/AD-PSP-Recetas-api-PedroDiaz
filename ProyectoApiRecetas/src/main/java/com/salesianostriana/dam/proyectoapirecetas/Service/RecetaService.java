@@ -109,8 +109,6 @@ public class RecetaService {
     }
 
     public RecetaIngrediente anadirIngrediente(Long recetaId, AniadirIngredienteDto cmd) {
-        System.out.println(recetaId);
-        System.out.println(cmd);
         Receta receta = recetaRepository.findById(recetaId)
                 .orElseThrow(() -> new EntidadNoEncontradaException(recetaId));
 

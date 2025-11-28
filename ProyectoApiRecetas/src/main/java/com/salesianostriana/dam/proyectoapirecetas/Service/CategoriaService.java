@@ -58,6 +58,8 @@ public class CategoriaService {
                     if (c.getNombre().equalsIgnoreCase(cmd.nombre())) {
                         List<Categoria> lista = categoriaRepository.findAll();
                         boolean existe = lista.stream().anyMatch(cat ->
+                                !cat.getId().equals(id)
+                                        &&
                                 cat.getNombre().equalsIgnoreCase(cmd.nombre())
                         );
                         if (existe) {

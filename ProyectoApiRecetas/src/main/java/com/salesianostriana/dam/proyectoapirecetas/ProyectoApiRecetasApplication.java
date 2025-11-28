@@ -1,4 +1,4 @@
-package com.salesianostriana.dam.proyectoapirecetas;
+	package com.salesianostriana.dam.proyectoapirecetas;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
