@@ -137,8 +137,7 @@ public class CategoriaController {
             description = "Elimina una categoría existente por su ID"
     )
     @ApiResponse(description = "Categoría eliminada exitosamente",
-            responseCode = "204",
-            content = @Content(schema = @Schema(implementation = Void.class)))
+            responseCode = "204")
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete (@PathVariable Long id){
         categoriaService.delete(id);

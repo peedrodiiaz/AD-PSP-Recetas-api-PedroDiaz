@@ -19,7 +19,7 @@ public class RecetaIngrediente {
     @ManyToOne
     @JoinColumn(name = "ingrediente_id")
     private Ingrediente ingrediente;
-    private String cantidad;
+    private double cantidad;
     private String unidad;
 
 }

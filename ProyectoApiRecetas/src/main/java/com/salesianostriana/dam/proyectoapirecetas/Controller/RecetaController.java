@@ -87,7 +87,7 @@ public class RecetaController {
 
     @Operation(
             summary = "Crear una nueva receta",
-            description = "Crea una nueva receta. Requiere el ID de una categoría existente"
+            description = "Crea una nueva receta. Necesitamos el ID de una categoría existente"
     )
     @ApiResponse(description = "Receta creada exitosamente",
             responseCode = "201",
@@ -134,7 +134,7 @@ public class RecetaController {
 
     @Operation(
             summary = "Editar una receta existente",
-            description = "Modifica los datos de una receta existente. Requiere el ID de una categoría existente"
+            description = "Modifica los datos de una receta existente. Necesita el ID de una categoría existente"
     )
     @ApiResponse(description = "Receta editada exitosamente",
             responseCode = "200",
@@ -180,15 +180,12 @@ public class RecetaController {
     @Operation(
             summary = "Añadir ingrediente a una receta (Relación M:M)",
             description = """
-                    Añade un ingrediente a una receta específica, estableciendo la relación Many-to-Many.
+                    Añade un ingrediente a una receta específica.
                     El DTO AniadirIngredienteDto permite especificar:
-                    - ingredienteId: ID del ingrediente existente a añadir
-                    - cantidad: Cantidad del ingrediente (ej: "200", "1.5")
-                    - unidad: Unidad de medida (ej: "gramos", "litros", "unidades", "cucharadas")
-                    
-                    Esta información se almacena en la tabla de enlace RecetaIngrediente,
-                    permitiendo que cada receta tenga múltiples ingredientes con sus cantidades específicas.
-                    """
+                    - ingredienteId, cantidad, unidad.
+                    Se almacena en la tabla de enlace RecetaIngrediente,
+                haciendo que cada receta tenga sus ingredientes
+                """
     )
     @ApiResponse(description = "Ingrediente añadido exitosamente a la receta",
             responseCode = "201",
@@ -228,7 +225,7 @@ public class RecetaController {
                                             value = """
                                                     {
                                                         "ingredienteId": 1,
-                                                        "cantidad": "200",
+                                                        "cantidad": 200,
                                                         "unidad": "gramos"
                                                     }
                                                     """
@@ -239,7 +236,7 @@ public class RecetaController {
                                             value = """
                                                     {
                                                         "ingredienteId": 2,
-                                                        "cantidad": "500",
+                                                        "cantidad": 500,
                                                         "unidad": "mililitros"
                                                     }
                                                     """
@@ -250,7 +247,7 @@ public class RecetaController {
                                             value = """
                                                     {
                                                         "ingredienteId": 3,
-                                                        "cantidad": "3",
+                                                        "cantidad": 3,
                                                         "unidad": "unidades"
                                                     }
                                                     """

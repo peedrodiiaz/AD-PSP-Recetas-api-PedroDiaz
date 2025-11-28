@@ -63,7 +63,7 @@ public class IngredienteController {
 
     @Operation(
             summary = "Crear un nuevo ingrediente",
-            description = "Crea un nuevo ingrediente que posteriormente podrá ser añadido a recetas con cantidad y unidad específicas"
+            description = "Crea un nuevo ingrediente que desppses  lo añadimos a recetas con cantidad y unidad específicas"
     )
     @ApiResponse(description = "Ingrediente creado exitosamente",
             responseCode = "201",

@@ -110,7 +110,7 @@ public class RecetaService {
 
     public RecetaIngrediente anadirIngrediente(Long recetaId, AniadirIngredienteDto cmd) {
         Receta receta = recetaRepository.findById(recetaId)
-                .orElseThrow(() -> new EntidadNoEncontradaException("Receta no encontrada con id: " + recetaId));
+                .orElseThrow(() -> new EntidadNoEncontradaException(recetaId));
 
         Ingrediente ingrediente = ingredienteRepository.findById(cmd.ingredienteId())
                 .orElseThrow(() -> new EntidadNoEncontradaException(cmd.ingredienteId()));

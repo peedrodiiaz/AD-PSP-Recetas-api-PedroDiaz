@@ -9,7 +9,7 @@ public record AniadirIngredienteDto(
         Long ingredienteId,
 
         @Schema(description = "Cantidad del ingrediente necesario para la receta", example = "200")
-        String cantidad,
+        double cantidad,
 
         @Schema(description = "Unidad de medida (gramos, litros, unidades, cucharadas, etc.)", example = "gramos")
         String unidad
